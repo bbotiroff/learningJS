@@ -1,0 +1,44 @@
+body{
+  margin: 20px 40px;
+  padding: 30px;
+}
+.clearfix{
+  overflow: auto;
+}
+div#samp-form{
+  background: #f2f2f2;
+  margin: 20px auto;
+  width: 700px;
+  padding: 20px;
+  border: 1px solid #f2f2f2;
+  border-radius: 10px;
+  box-shadow: 3px 7px 10px grey;
+}
+label{
+  display: block;
+  color: #333333;
+}
+input{
+  display:block;
+  padding: 15px 60px;
+  margin: 7px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+button{
+  width: 100%;
+  padding: 10px 60px;
+  margin: 10px;
+  background: #34c5ad;
+  color: #fff;
+  font-size: 18pt;
+  font-family: sans-serif;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.eror{
+  border: 2px solid red;
+  background: #f68d8d;
+  color:#fff;
+}
