@@ -1,0 +1,36 @@
+/*General*/
+*{
+  color:#0f0f0f;
+  font-family: sans-serif;
+}
+body{
+  margin: 0;
+  padding: 0;  
+}
+div#center{
+  width: 800px;
+  margin: 10px auto;
+}
+a{
+  display: block;
+  padding: 5px;
+  margin: 10px;
+  border: 1px solid #3560a0;
+  text-decoration: none;
+  color: #0043a8;
+  width: 200px;
+  float: left;
+  text-align: center;
+}
+a:hover{
+  background: #8bb7f7;
+  color: #fff;
+}
+img{  
+  border: 1px solid #3560a0;
+  width: 750px;
+}
+.hide{
+  display: none;
+}
+/*End GENERAL*/

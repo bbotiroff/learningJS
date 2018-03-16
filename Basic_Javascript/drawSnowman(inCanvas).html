@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Canvas</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+
+    <script type="text/javascript">
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+      var circle = function(x, y, radius, fillCircle){
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI*2, false);
+        if(fillCircle){
+          ctx.fill();
+        }else {
+          ctx.stroke();
+        }
+      }
+
+      function drawSnowman(event){
+        circle(event.clientX, event.clientY, 30, false);
+        circle(event.clientX, event.clientY+70, 40, false);
+      }
+
+
+      var body = document.querySelector("body");
+
+      body.addEventListener("click", drawSnowman);
+    </script>
+  </body>
+</html>

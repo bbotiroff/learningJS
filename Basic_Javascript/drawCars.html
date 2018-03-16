@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Draw car with objects</title>
+  </head>
+  <body>
+
+<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+<script type="text/javascript">
+  var randomSpeed = function(){
+      var speed = Math.floor(Math.random()*10);
+        if(speed === 0){
+          return speed = 1;
+        }else{
+          return speed;
+        }
+  }
+
+  //Creating cunstroctor function
+    var Car = function(x,y, photoCar){
+      this.x = x;
+      this.y = y;
+      this.photoCar = '<div><img src="' + photoCar + '" ></div>';
+      this.draw();
+    }
+
+  //helper function for changing css elements
+    Car.prototype.elementWithCSSPosition = function(){
+      this.element.css({
+        position: "absolute",
+        left: this.x,
+        top: this.y
+      });
+
+    }
+
+  //display picture on screen
+     Car.prototype.draw = function(){
+      this.element = $(this.photoCar);
+      this.elementWithCSSPosition();
+
+      $("body").append(this.element);
+    }
+
+  //moving to right
+    Car.prototype.moveRight = function(speed){
+    //moves to right
+      this.x += speed;
+      this.elementWithCSSPosition();
+      console.log(speed);
+      if(this.x> 700){
+        clearInterval(id);
+      }
+    }
+
+
+
+    var bmw = new Car(50, 50, "bmw.png");
+    var nexia = new Car(50, 150, "bmw.png");
+    var id  = setInterval(function(){bmw.moveRight(randomSpeed()); nexia.moveRight(randomSpeed());}, 30);
+
+    console.log(bmw.newSpeed + " " + nexia.newSpeed);
+</script>
+  </body>
+</html>

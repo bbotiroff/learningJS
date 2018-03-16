@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Canvas</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="400" height="400"></canvas>
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script type="text/javascript">
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+      var width = canvas.width;
+      var height = canvas.height;
+      var circle = function(x,y, radius, fillCircle){
+        ctx.beginPath();
+        ctx.arc(x,y, radius, 0, Math.PI*2, false);
+        if(fillCircle){
+          ctx.fill();
+        }else{
+          ctx.stroke();
+        }
+      }
+      var Ball = function(){
+        this.x = width/2;
+        this.y = height/2;
+        this.speed = 0;
+        this.xSpeed = this.speed;
+        this.ySpeed = this.speed;
+      }
+
+      Ball.prototype.draw = function(){
+        circle(this.x, this.y, 12, true);
+      }
+
+      Ball.prototype.move = function(){
+
+        this.x += this.xSpeed;
+        this.y += this.ySpeed;
+
+        if(this.x <0 || this.x>width){
+          this.xSpeed = -this.xSpeed;
+        }else if (this.y <0 || this.y>height) {
+          this.ySpeed = -this.ySpeed;
+        }
+      }
+
+
+
+      Ball.prototype.setDirection = function(direction, speed){
+
+          if(typeof speed === "number"){
+            this.speed = speed;
+          }
+        if(direction === "up"){
+          this.xSpeed = 0;
+          this.ySpeed = -this.speed;
+        }else if (direction === "down" ) {
+          this.xSpeed = 0;
+          this.ySpeed = this.speed;
+        }else if (direction === "left" ) {
+          this.xSpeed = -this.speed;
+          this.ySpeed = 0;
+        }else if(direction === "right"){
+          this.xSpeed = this.speed;
+          this.ySpeed = 0;
+        }else if (direction === "stop") {
+          this.xSpeed = 0;
+          this.ySpeed = 0;
+        }
+      }
+    var ball = new Ball();
+      var speeds = {
+        49: 1, 50: 2, 51: 3, 52:4, 53:5, 54:6, 55:7, 56:8, 57:9
+      }
+
+    var keyActions = {
+      32: "stop",
+      37: "left",
+      39: "right",
+      38: "up",
+      40: "down"
+    }
+
+
+
+
+    $("body").keydown(function(event){
+
+      var direction = keyActions[event.keyCode];
+      var newSpeed = speeds[event.keyCode];
+
+      ball.setDirection(direction, newSpeed);
+    });
+
+    setInterval(function(){
+      ctx.clearRect(0,0, width, height);
+
+      ball.draw();
+      ball.move();
+      console.log(ball);
+      ctx.strokeRect(0,0,width, height);
+    });
+    </script>
+  </body>
+</html>

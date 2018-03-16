@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <title>Date with celebrate</title>
+  <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+  <div id="form">
+    <form>
+      <label for="name">Input your name:</label>
+      <input type="text" id="name"  required>
+      <label for="age">Input your age</label>
+      <input type="text" id="age"  required>
+      <label for="gender">Select your gender</label>
+      <select id="gender">
+        <option selected>Choose one</option>
+        <option>male</option>
+        <option>female</option>
+      </select>
+      <label for="orientation">Select your orientation</label>
+      <select id="orientation">
+        <option selected>Choose one</option>
+        <option>straight</option>
+        <option>gay</option>
+      </select>
+      <button  id="submit">Check</button>
+    </form>
+  </div>
+  <div id="showMe" class="hidden">
+    <p id="text">Congratulations!!! There is a match: You could have dated with <span id="celebrity"></span> , if you were in HOLLYWOOD!!!</p>
+    <img src="img/LianaLiberato.jpg"  class="hidden" id="LianaL">
+    <img src="img/Emma%20Robertson.jpg"  class="hidden" id="EmmaR">
+    <img src="img/zac_efron.jpg" class="hidden" id="ZacE">
+    <img src="img/jhonny_depp.jpg"  class="hidden" id="JDepp">
+    <img src="img/ellen.jpg" class="hidden" id="Ellen">
+    <img src="img/robbertPattison.jpg"  class="hidden" id="RobertP">
+  </div>
+  <script src="scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Canvas</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="1000" height="1000"></canvas>
+
+    <script type="text/javascript">
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      var points = [[50,50],[50, 100],[25, 120],[100, 50],[70, 90],[100, 90],[70, 120]];
+      var drawLine = function(pointsOfArray){
+        ctx.strokeStyle = "darkgreen";
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+          for(i=0; i<pointsOfArray.length; i++){
+            var nextOne = 0;
+              if(nextOne<pointsOfArray.length){
+                nextOne =0;
+              }else{
+                nextOne += i;
+              }
+            ctx.moveTo(pointsOfArray[i][0], pointsOfArray[i][1]);
+            ctx.lineTo(pointsOfArray[nextOne][0], pointsOfArray[nextOne][1]);
+          }
+        ctx.stroke();
+      }
+        drawLine(points);
+    </script>
+  </body>
+</html>

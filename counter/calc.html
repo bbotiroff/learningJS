@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <title>Button</title>
+    <style>
+        #box{
+            margin: 0 auto;
+            width: 100px;
+            text-align: center;
+            color: #999;
+            background: #444;
+            border-radius: 10px;
+            box-shadow: 3px 3px 3px grey;
+            background-clip: padding-box;
+            padding: 20px 15px;
+        }
+        label{
+            
+        }
+        .btn{
+            background: #999;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px #000;
+            margin-bottom: 4px;
+        }
+        .btn:hover{
+            background-color: lightgrey;
+        }
+        #qty{
+            text-align: center;
+            color: #999;
+            background: none;
+            width: 100%;
+            border: none;
+            padding: 5px;
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>    
+    <div id="box">
+        <label>QTY</label><br/>
+        <input value="0" id="qty" /><br/>
+        <input type="button" value="-1" class="btn" onclick="countIt(-1);" />
+        <input type="button" value="+1" class="btn" onclick="countIt(+1);" /><br/>
+        <input type="button" value="RESET" id="reset" class="btn" onclick="countIt(0);"/> 
+    </div>
+<script>
+function countIt(val){
+    var qty = document.getElementById('qty').value;
+    var new_qty = parseInt(qty,10) + val;
+        if (new_qty < 0 || val === 0){
+            new_qty = 0;
+        }
+    document.getElementById('qty').value = new_qty;
+    return new_qty;
+}
+</script>    
+</body>
+</html>

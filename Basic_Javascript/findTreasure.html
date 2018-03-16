@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Find the tresure</title>
+  </head>
+  <body>
+    <h1 id="heading">Find a burried treasure</h1>
+    <img id="map" src="treasuremap.jpg" width="800" height="500">
+    <h4 id="distance"></h4>
+
+
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script type="text/javascript">
+      var width = 800;
+      var height = 550;
+      var target = {
+        x: getRandomNumber(width),
+        y: getRandomNumber(height)
+      };
+
+        var clicks = 0;
+
+      $("#map").click(function(event, target){
+        var distance = getDistance(event, target);
+        var distanceHint = howClose(distance);
+
+          $("#distance").text(distanceHint +" " + distance + " distance for target");
+
+          if(distance<8){
+            $("#distance").text("Congratulations! There you go you are rich now!!! It taked " + clicks + " steps to find treasure.");
+          }
+
+        clicks ++;
+      });
+
+
+      //Get random distance
+        function getRandomNumber(size){
+          return Math.floor(Math.random()*size);
+        }
+      //distance from user clicked point to the treasure
+        function getDistance(event){
+          var distX = event.offsetX - target.x;
+          var distY = event.offsetY - target.y;
+          return Math.floor(Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2)));
+        }
+
+        function howClose(distance){
+          if( distance<10){
+                return "OOH close";
+              }else if(distance<100){
+                return "very hot";
+              }else if(distance<200){
+                return "Hot";
+              }else if(distance<400){
+                return "Half way";
+              }else if(distance<600){
+                return "You are in";
+              }else{
+              return "not even close!"
+          }
+        }
+    </script>
+  </body>
+</html>
